@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <title>MPEG DASH demo</title>
+    <script src="https://reference.dashif.org/dash.js/v3.1.1/dist/dash.all.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+    <script src="jqueryfiletree/dist/jQueryFileTree.min.js"></script>
+    <link href="jqueryfiletree/dist/jQueryFileTree.min.css" rel="stylesheet" type="text/css" media="screen" />
+
+    <script>
+        $(document).ready(function() {
+            $('#fileTree').fileTree({ root: '/data/', 
+                                      script: 'jqueryFileTree.php',
+                                      onlyFiles: true },
+                                    function(file) {
+                if (typeof(player) == "undefined") {
+                    player = dashjs.MediaPlayer().create();
+                    player.initialize(document.querySelector("#videoPlayer"), file, true);
+                } else {
+                    player.attachSource(file);
+                }
+            });
+        });
+    </script>
+
+    <style>
+        video {
+            width: 640px;
+            height: 480px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>MPEG DASH demo</h1>
+    <div>
+        <video id="videoPlayer" controls="true"></video>
+    </div>
+    <h2>Select media</h2>
+    <div id="fileTree" class="browser"></div>
+</body>
+</html>
