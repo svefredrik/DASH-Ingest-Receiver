@@ -13,10 +13,10 @@ TODO: A Dockerfile to make it run anywhere.
 
 ## Usage
 
-Configure the broadcaster to push media to the URL <http://<ip-address>:9999/receiver>, e.g. for the ABR Broadcaster set the Ingest Base URL to this. Set Output Type to DASH and a suitable segment size, e.g. 5 seconds.
+Configure the broadcaster to push media to the URL <http://ip-address:9999/receiver>, e.g. for the ABR Broadcaster set the Ingest Base URL to this. Set Output Type to DASH and a suitable segment size, e.g. 5 seconds.
 
 The receiver will store the received chunks and MDPs in a directory called `data`. MDPs are modified on the fly to ensure they are playable by the DASH player, e.g. `type` is set to `static` and `mediaPresentationDuration` is updated.
 
 Apache errors are logged to `/var/log/apache2/dashreceiver-error_log`, please check it if you have problems.
 
-The web interface can be accessed via <http://<ip-address>:9999/>. This implements a simple file browser to select which MDP to play in the [dash.js](https://github.com/Dash-Industry-Forum/dash.js) player.
+The web interface can be accessed via <http://ip-address:9999/>. This implements a simple file browser to select which MDP to play in the [dash.js](https://github.com/Dash-Industry-Forum/dash.js) player.
